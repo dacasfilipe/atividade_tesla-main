@@ -133,7 +133,7 @@ router.get('/visao/detalhesPedidos', async (req, res) => {
     }
 });
 
- // Método POST para cadastrar um livro
+ // Método POST para cadastrar um pedido
  router.post('/', async (req, res) => {
     try {
         const query = `INSERT INTO pedidos (clienteId, carroId, dataPedido, statusPedido, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?)`;

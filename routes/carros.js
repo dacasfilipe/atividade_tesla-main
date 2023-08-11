@@ -117,7 +117,7 @@ router.post('/', async (req, res) => {
             message: "Tarefa criada com sucesso",
             results: results,
         });
-    } catch (error) {
+     } catch (error) {
         res.status(500).json({
             success: false,
             message: error.message,
