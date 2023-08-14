@@ -5,9 +5,30 @@ const sequelize = require("../sequelize");
 const Carro = require('../model/carro');
 const Pedidos = require('../model/pedido');
 sequelize.sync();
+//lista os carros
+router.get('/', async (req, res) => {
+    const { page = 1, limit = 10 } = req.query;
+    try {
+        const [results, metadata] = await sequelize.query( //lista somente o ultimo inserido(VER)
+            `SELECT * FROM carros`,
+            {
+                replacements: { limit: limit, offset: (page - 1) * limit },
+                type: sequelize.QueryTypes.SELECT
+            }
+        );
+        res.json({
+            carros: results,
+        });
+    } catch (error) {
+        res.status(500).json({
+            sucess: false,
+            message: error.message,
+        });
+    }
+});
 
 //GET Retorna carros com status do pedido
-router.get('/', async (req, res) => {
+router.get('/carros-pedidos', async (req, res) => {
     const { page = 1, limit = 10 } = req.query;
     try {
         const [results, metadata] = await sequelize.query(

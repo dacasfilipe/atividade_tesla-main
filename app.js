@@ -11,7 +11,7 @@ const pedido = require('./routes/pedidos.js');
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use('/carro', carro);
+app.use('/carros', carro);
 app.use('/cliente', cliente);
 app.use('/inventario', inventario);
 app.use('/pedido', pedido);
